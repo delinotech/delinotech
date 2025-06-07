@@ -1,0 +1,1675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delino Tech - Premier IT Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 16px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            color: #1e293b;
+            text-decoration: none;
+            background: linear-gradient(135deg, #1e293b, #475569);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #475569;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: #1e293b;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #1e293b, #475569);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, #1e293b, #475569);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(30, 41, 59, 0.4);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(30, 41, 59, 0.6);
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background: #1e293b;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%);
+            padding-top: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23f1f5f9" fill-opacity="0.3" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #475569;
+            margin-bottom: 32px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-badge span {
+            margin-right: 8px;
+            font-size: 16px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            color: #1e293b;
+            margin-bottom: 24px;
+            line-height: 1.1;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e293b, #475569, #64748b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 22px;
+            color: #64748b;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #1e293b, #475569);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(30, 41, 59, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(30, 41, 59, 0.6);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #1e293b;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 2px solid #e2e8f0;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            border-color: #cbd5e1;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 80px 24px;
+            background: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #1e293b;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .stat-label {
+            color: #64748b;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 120px 24px;
+            background: linear-gradient(135deg, #f8fafc, #eff6ff);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 16px;
+            background: white;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #475569;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-badge span {
+            margin-right: 8px;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #1e293b;
+            margin-bottom: 24px;
+        }
+
+        .section-header p {
+            font-size: 20px;
+            color: #64748b;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #f1f5f9;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1);
+        }
+
+        .service-icon.slate {
+            background: linear-gradient(135deg, #1e293b, #475569);
+            color: white;
+        }
+
+        .service-icon.blue {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+        }
+
+        .service-icon.purple {
+            background: linear-gradient(135deg, #7c3aed, #6d28d9);
+            color: white;
+        }
+
+        .service-icon.teal {
+            background: linear-gradient(135deg, #0d9488, #0f766e);
+            color: white;
+        }
+
+        .service-icon.amber {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+        }
+
+        .service-icon.red {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            color: white;
+        }
+
+        .service-icon.green {
+            background: linear-gradient(135deg, #059669, #047857);
+            color: white;
+        }
+
+        .service-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 16px;
+        }
+
+        .service-card p {
+            color: #64748b;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .service-features {
+            list-style: none;
+            padding: 0;
+        }
+
+        .service-features li {
+            display: flex;
+            align-items: center;
+            color: #475569;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .service-features li:before {
+            content: "✓";
+            color: #10b981;
+            font-weight: bold;
+            margin-right: 12px;
+        }
+
+        /* Why Choose Us Section */
+        .advantages {
+            padding: 120px 24px;
+            background: white;
+        }
+
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .advantage-item {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .advantage-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            color: #475569;
+            font-size: 28px;
+            transition: all 0.3s ease;
+        }
+
+        .advantage-item:hover .advantage-icon {
+            background: linear-gradient(135deg, #1e293b, #475569);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .advantage-item h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 16px;
+        }
+
+        .advantage-item p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 120px 24px;
+            background: linear-gradient(135deg, #1e293b, #475569);
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 24px;
+        }
+
+        .cta p {
+            font-size: 20px;
+            color: #cbd5e1;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-white {
+            background: white;
+            color: #1e293b;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: #0f172a;
+            color: white;
+            padding: 80px 24px 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: white;
+        }
+
+        .footer-section p,
+        .footer-section li {
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding-top: 40px;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            color: #64748b;
+            margin: 0;
+        }
+
+        /* Services Detail */
+        .services-detail {
+            padding: 120px 24px;
+        }
+
+        .services-detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 40px;
+        }
+
+        .service-detail-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .service-detail-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-detail-header {
+            padding: 40px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .service-icon.large {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            margin-bottom: 24px;
+        }
+
+        .service-detail-header h3 {
+            font-size: 28px;
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 12px;
+        }
+
+        .service-detail-header p {
+            font-size: 18px;
+            color: #64748b;
+        }
+
+        .service-features {
+            padding: 40px;
+        }
+
+        .service-features ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .service-features li {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            font-size: 16px;
+            color: #475569;
+            border-bottom: 1px solid #f8fafc;
+        }
+
+        .service-features li:before {
+            content: "✓";
+            color: #10b981;
+            font-weight: bold;
+            margin-right: 16px;
+            font-size: 18px;
+        }
+
+        .service-features li:last-child {
+            border-bottom: none;
+        }
+
+        /* Process Section */
+        .process {
+            padding: 120px 24px;
+            background: linear-gradient(135deg, #f8fafc, #eff6ff);
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .process-step {
+            text-align: center;
+        }
+
+        .process-number {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 24px;
+            font-weight: 900;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+
+        .process-step:hover .process-number {
+            transform: scale(1.1);
+        }
+
+        .process-number.slate {
+            background: linear-gradient(135deg, #1e293b, #475569);
+        }
+
+        .process-number.blue {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+        }
+
+        .process-number.purple {
+            background: linear-gradient(135deg, #7c3aed, #6d28d9);
+        }
+
+        .process-number.amber {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+
+        .process-step h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 12px;
+        }
+
+        .process-step p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* Mission Section */
+        .mission {
+            padding: 120px 24px;
+        }
+
+        .mission-card {
+            background: white;
+            padding: 60px;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .mission-card h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #1e293b;
+            margin-bottom: 32px;
+        }
+
+        .mission-card p {
+            font-size: 20px;
+            color: #475569;
+            line-height: 1.8;
+        }
+
+        /* Values Section */
+        .values {
+            padding: 120px 24px;
+            background: linear-gradient(135deg, #f8fafc, #eff6ff);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .value-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .value-card:hover .value-icon {
+            transform: scale(1.1);
+        }
+
+        .value-icon.slate {
+            background: linear-gradient(135deg, #1e293b, #475569);
+            color: white;
+        }
+
+        .value-icon.blue {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+        }
+
+        .value-icon.purple {
+            background: linear-gradient(135deg, #7c3aed, #6d28d9);
+            color: white;
+        }
+
+        .value-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 16px;
+        }
+
+        .value-card p {
+            font-size: 16px;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* Contact Info */
+        .contact-info {
+            padding: 120px 24px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            color: #475569;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover .contact-icon {
+            transform: scale(1.1);
+        }
+
+        .contact-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 12px;
+        }
+
+        .contact-card p {
+            color: #475569;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .contact-note {
+            color: #64748b;
+            font-size: 14px;
+            font-style: italic;
+        }
+
+        /* Social Section */
+        .social-section {
+            padding: 120px 24px;
+            background: linear-gradient(135deg, #f8fafc, #eff6ff);
+        }
+
+        .social-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .social-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .social-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .social-card-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .social-card:hover .social-card-icon {
+            transform: scale(1.1);
+        }
+
+        .social-card.youtube .social-card-icon {
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+            color: white;
+        }
+
+        .social-card.linkedin .social-card-icon {
+            background: linear-gradient(135deg, #0077b5, #005885);
+            color: white;
+        }
+
+        .social-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 12px;
+        }
+
+        .social-card p {
+            color: #64748b;
+            margin-bottom: 16px;
+        }
+
+        .social-link-text {
+            color: #475569;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* CTA About */
+        .cta-about {
+            padding: 120px 24px;
+            background: linear-gradient(135deg, #f8fafc, #eff6ff);
+            text-align: center;
+        }
+
+        .cta-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 16px;
+            background: white;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #475569;
+            margin-bottom: 32px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .cta-badge span {
+            margin-right: 8px;
+        }
+
+        .cta-about h2 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #1e293b;
+            margin-bottom: 24px;
+        }
+
+        .cta-about p {
+            font-size: 20px;
+            color: #64748b;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Section Header White */
+        .section-header.white h2 {
+            color: white;
+        }
+
+        .section-header.white p {
+            color: #cbd5e1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 60px;
+                transition: all 0.3s ease;
+                gap: 32px;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .bar.active:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .bar.active:nth-child(2) {
+                opacity: 0;
+            }
+
+            .bar.active:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .section-header p {
+                font-size: 16px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .advantages-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .cta h2 {
+                font-size: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .services-detail-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mission-card {
+                padding: 40px 24px;
+            }
+
+            .mission-card h2 {
+                font-size: 2rem;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-about h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">Delino Tech</a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#contact" class="nav-btn">Get Started</a></li>
+            </ul>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span>🚀</span>
+                    Trusted by 500+ Businesses Worldwide
+                </div>
+                <h1>Transform Your Business with <span class="hero-gradient">Premium IT Solutions</span></h1>
+                <p>Experience enterprise-grade technology services that drive innovation, enhance security, and accelerate your digital transformation journey.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn-primary">Start Your Project</a>
+                    <a href="#services" class="btn-secondary">Explore Services</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Projects Completed</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Expert Professionals</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">99.9%</span>
+                    <span class="stat-label">Uptime Guarantee</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Premium Support</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <span>⚡</span>
+                    Our Expertise
+                </div>
+                <h2>Comprehensive IT Solutions</h2>
+                <p>From cloud infrastructure to cybersecurity, we deliver cutting-edge technology solutions that empower your business to thrive in the digital age.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon slate">☁️</div>
+                    <h3>Cloud Computing</h3>
+                    <p>Scalable cloud infrastructure solutions that grow with your business, ensuring maximum efficiency and cost-effectiveness.</p>
+                    <ul class="service-features">
+                        <li>AWS & Azure Migration</li>
+                        <li>Cloud Architecture Design</li>
+                        <li>Serverless Solutions</li>
+                        <li>Multi-cloud Strategy</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon blue">🔒</div>
+                    <h3>Cybersecurity</h3>
+                    <p>Advanced security solutions to protect your digital assets and ensure compliance with industry standards.</p>
+                    <ul class="service-features">
+                        <li>Threat Detection & Response</li>
+                        <li>Security Audits</li>
+                        <li>Compliance Management</li>
+                        <li>Employee Training</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon green">💼</div>
+                    <h3>NetSuite Services</h3>
+                    <p>Comprehensive NetSuite implementation and optimization services to streamline your business operations.</p>
+                    <ul class="service-features">
+                        <li>NetSuite Implementation</li>
+                        <li>Custom Development</li>
+                        <li>Integration Services</li>
+                        <li>Ongoing Support</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon purple">📱</div>
+                    <h3>Software Development</h3>
+                    <p>Custom software solutions built with modern technologies to streamline your business processes.</p>
+                    <ul class="service-features">
+                        <li>Web Applications</li>
+                        <li>Mobile App Development</li>
+                        <li>API Development</li>
+                        <li>Legacy System Modernization</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon teal">🔧</div>
+                    <h3>IT Support & Maintenance</h3>
+                    <p>Comprehensive IT support services to keep your systems running smoothly and your team productive.</p>
+                    <ul class="service-features">
+                        <li>24/7 Help Desk Support</li>
+                        <li>System Monitoring</li>
+                        <li>Preventive Maintenance</li>
+                        <li>Hardware Management</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon amber">📊</div>
+                    <h3>Data Analytics</h3>
+                    <p>Transform your data into actionable insights with our advanced analytics and business intelligence solutions.</p>
+                    <ul class="service-features">
+                        <li>Business Intelligence</li>
+                        <li>Data Visualization</li>
+                        <li>Predictive Analytics</li>
+                        <li>Real-time Reporting</li>
+                    </ul>
+                </div>
+                <!-- <div class="service-card">
+                    <div class="service-icon red">🌐</div>
+                    <h3>Network Infrastructure</h3>
+                    <p>Robust network solutions that ensure secure, reliable, and high-performance connectivity for your organization.</p>
+                    <ul class="service-features">
+                        <li>Network Design & Implementation</li>
+                        <li>Wireless Solutions</li>
+                        <li>Network Security</li>
+                        <li>Performance Optimization</li>
+                    </ul>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Detail Section -->
+    <section class="services-detail">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <span>🎯</span>
+                    Service Deep Dive
+                </div>
+                <h2>Detailed Service Offerings</h2>
+                <p>Explore our comprehensive range of IT services designed to meet your specific business needs and drive digital transformation.</p>
+            </div>
+            <div class="services-detail-grid">
+                <div class="service-detail-card">
+                    <div class="service-detail-header">
+                        <div class="service-icon large slate">☁️</div>
+                        <h3>Enterprise Cloud Solutions</h3>
+                        <p>Complete cloud transformation services for enterprise-scale operations</p>
+                    </div>
+                    <div class="service-features">
+                        <ul>
+                            <li>Cloud strategy consultation and roadmap development</li>
+                            <li>Multi-cloud and hybrid cloud architecture design</li>
+                            <li>Cloud-native application development</li>
+                            <li>DevOps and CI/CD pipeline implementation</li>
+                            <li>Cloud cost optimization and governance</li>
+                            <li>Disaster recovery and backup solutions</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-detail-card">
+                    <div class="service-detail-header">
+                        <div class="service-icon large green">💼</div>
+                        <h3>NetSuite Solutions</h3>
+                        <p>End-to-end NetSuite services to optimize your business operations</p>
+                    </div>
+                    <div class="service-features">
+                        <ul>
+                            <li>NetSuite implementation and configuration</li>
+                            <li>Custom SuiteScript development</li>
+                            <li>SuiteFlow workflow automation</li>
+                            <li>Third-party system integrations</li>
+                            <li>Data migration and cleansing</li>
+                            <li>Ongoing support and optimization</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <span>🔄</span>
+                    Our Process
+                </div>
+                <h2>How We Deliver Excellence</h2>
+                <p>Our proven methodology ensures successful project delivery and long-term client satisfaction.</p>
+            </div>
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="process-number slate">1</div>
+                    <h3>Discovery & Analysis</h3>
+                    <p>We start by understanding your business needs, challenges, and goals to create a tailored solution strategy.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number blue">2</div>
+                    <h3>Strategy & Planning</h3>
+                    <p>Our experts develop a comprehensive project plan with clear milestones, timelines, and deliverables.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number purple">3</div>
+                    <h3>Implementation</h3>
+                    <p>We execute the project using industry best practices, ensuring quality and adherence to timelines.</p>
+                </div>
+                <div class="process-step">
+                    <div class="process-number amber">4</div>
+                    <h3>Support & Optimization</h3>
+                    <p>Ongoing support and continuous optimization to ensure your solutions deliver maximum value.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="advantages">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <span>🏆</span>
+                    Why Choose Us
+                </div>
+                <h2>The Delino Tech Advantage</h2>
+                <p>Experience the difference that comes with partnering with a technology leader committed to your success.</p>
+            </div>
+            <div class="advantages-grid">
+                <div class="advantage-item">
+                    <div class="advantage-icon">🎯</div>
+                    <h3>Expert Team</h3>
+                    <p>Our certified professionals bring years of experience and deep expertise in cutting-edge technologies to every project.</p>
+                </div>
+                <div class="advantage-item">
+                    <div class="advantage-icon">⚡</div>
+                    <h3>Rapid Deployment</h3>
+                    <p>Accelerated project timelines without compromising quality, getting your solutions up and running faster.</p>
+                </div>
+                <div class="advantage-item">
+                    <div class="advantage-icon">🔒</div>
+                    <h3>Security First</h3>
+                    <p>Enterprise-grade security measures built into every solution, ensuring your data and systems remain protected.</p>
+                </div>
+                <div class="advantage-item">
+                    <div class="advantage-icon">📈</div>
+                    <h3>Scalable Solutions</h3>
+                    <p>Future-proof technologies that grow with your business, ensuring long-term value and investment protection.</p>
+                </div>
+                <div class="advantage-item">
+                    <div class="advantage-icon">🎧</div>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock technical support and monitoring to ensure your systems operate at peak performance.</p>
+                </div>
+                <div class="advantage-item">
+                    <div class="advantage-icon">💰</div>
+                    <h3>Cost Effective</h3>
+                    <p>Optimized solutions that deliver maximum ROI while staying within budget constraints.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="mission">
+        <div class="container">
+            <div class="mission-card">
+                <h2>Our Mission</h2>
+                <p>At Delino Tech, we are dedicated to empowering businesses through innovative technology solutions. Our mission is to bridge the gap between complex technology and business success, delivering solutions that not only meet today's challenges but anticipate tomorrow's opportunities.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <span>💎</span>
+                    Our Values
+                </div>
+                <h2>What Drives Us</h2>
+                <p>Our core values guide every decision we make and every solution we deliver.</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon slate">🎯</div>
+                    <h3>Excellence</h3>
+                    <p>We strive for excellence in every project, delivering solutions that exceed expectations and drive measurable business results.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon blue">🤝</div>
+                    <h3>Partnership</h3>
+                    <p>We believe in building long-term partnerships with our clients, working together as trusted advisors to achieve shared success.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon purple">🚀</div>
+                    <h3>Innovation</h3>
+                    <p>We embrace emerging technologies and innovative approaches to solve complex business challenges and create competitive advantages.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-info">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <span>📍</span>
+                    Get in Touch
+                </div>
+                <h2>Contact Information</h2>
+                <p>Ready to transform your business with cutting-edge technology? Get in touch with our experts today.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">🏢</div>
+                    <h3>Headquarters</h3>
+                    <p>Orlando, Florida</p>
+                    <p class="contact-note">United States</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📧</div>
+                    <h3>Email</h3>
+                    <p>info@delinotech.com</p>
+                    <p class="contact-note">We respond within 24 hours</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">⏰</div>
+                    <h3>Business Hours</h3>
+                    <p>Monday - Friday: 9:00 AM - 6:00 PM EST</p>
+                    <p class="contact-note">24/7 Emergency Support Available</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Section -->
+    <section class="social-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <span>🌐</span>
+                    Connect With Us
+                </div>
+                <h2>Follow Our Journey</h2>
+                <p>Stay updated with the latest technology trends, company news, and industry insights.</p>
+            </div>
+            <div class="social-cards">
+                <a href="https://www.youtube.com/@DelinoTech" target="_blank" class="social-card youtube">
+                    <div class="social-card-icon">📺</div>
+                    <h3>YouTube</h3>
+                    <p>Watch our tech tutorials, case studies, and industry insights.</p>
+                    <div class="social-link-text">@DelinoTech</div>
+                </a>
+                <a href="https://www.linkedin.com/company/delinotech/" target="_blank" class="social-card linkedin">
+                    <div class="social-card-icon">💼</div>
+                    <h3>LinkedIn</h3>
+                    <p>Connect with our team and stay updated on company news.</p>
+                    <div class="social-link-text">@delino-tech</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Transform Your Business?</h2>
+            <p>Join hundreds of satisfied clients who have accelerated their growth with our premium IT solutions.</p>
+            <a href="#contact" class="btn-white">Start Your Project Today</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Delino Tech</h3>
+                    <p>Empowering businesses through innovative technology solutions. Your trusted partner for digital transformation and IT excellence.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#services">Cloud Computing</a></li>
+                        <li><a href="#services">NetSuite Services</a></li>
+                        <li><a href="#services">Cybersecurity</a></li>
+                        <li><a href="#services">Software Development</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#services">Our Process</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p>Orlando, Florida</p>
+                    <p>info@delinotech.com</p>
+                    <p>Monday - Friday: 9:00 AM - 6:00 PM EST</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Delino Tech. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+        const navToggle = document.getElementById('nav-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                
+                // Animate hamburger menu
+                const bars = navToggle.querySelectorAll('.bar');
+                bars.forEach(bar => {
+                    bar.classList.toggle('active');
+                });
+            });
+
+            // Close menu when clicking on a link
+            const navLinks = navMenu.querySelectorAll('.nav-link, .nav-btn');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navMenu.classList.remove('active');
+                    const bars = navToggle.querySelectorAll('.bar');
+                    bars.forEach(bar => {
+                        bar.classList.remove('active');
+                    });
+                });
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        const anchorLinks = document.querySelectorAll('a[href^="#"]');
+        anchorLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        const animateElements = document.querySelectorAll('.service-card, .advantage-item, .value-card, .contact-card');
+        animateElements.forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Counter animation for stats
+        const statNumbers = document.querySelectorAll('.stat-number');
+        const statsObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        statNumbers.forEach(stat => {
+            statsObserver.observe(stat);
+        });
+
+        function animateCounter(element) {
+            const text = element.textContent;
+            const number = parseInt(text.replace(/[^\d]/g, ''));
+            const suffix = text.replace(/[\d]/g, '');
+            const duration = 2000;
+            const increment = number / (duration / 16);
+            let current = 0;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= number) {
+                    current = number;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current) + suffix;
+            }, 16);
+        }
+        });
+    </script>
+</body>
+</html>
