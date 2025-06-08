@@ -1257,17 +1257,6 @@
                         <li>Real-time Reporting</li>
                     </ul>
                 </div>
-                <!-- <div class="service-card">
-                    <div class="service-icon red">🌐</div>
-                    <h3>Network Infrastructure</h3>
-                    <p>Robust network solutions that ensure secure, reliable, and high-performance connectivity for your organization.</p>
-                    <ul class="service-features">
-                        <li>Network Design & Implementation</li>
-                        <li>Wireless Solutions</li>
-                        <li>Network Security</li>
-                        <li>Performance Optimization</li>
-                    </ul>
-                </div> -->
             </div>
         </div>
     </section>
@@ -1654,8 +1643,23 @@
 
         function animateCounter(element) {
             const text = element.textContent;
-            const number = parseInt(text.replace(/[^\d]/g, ''));
-            const suffix = text.replace(/[\d]/g, '');
+            let number = 0;
+            let suffix = '';
+            
+            // Handle different stat formats
+            if (text.includes('%')) {
+                number = parseFloat(text.replace('%', ''));
+                suffix = '%';
+            } else if (text.includes('/')) {
+                // For 24/7, we don't animate, just display as-is
+                return;
+            } else if (text.includes('+')) {
+                number = parseInt(text.replace('+', ''));
+                suffix = '+';
+            } else {
+                number = parseInt(text);
+            }
+            
             const duration = 2000;
             const increment = number / (duration / 16);
             let current = 0;
@@ -1666,7 +1670,12 @@
                     current = number;
                     clearInterval(timer);
                 }
-                element.textContent = Math.floor(current) + suffix;
+                
+                if (suffix === '%') {
+                    element.textContent = current.toFixed(1) + suffix;
+                } else {
+                    element.textContent = Math.floor(current) + suffix;
+                }
             }, 16);
         }
         });
