@@ -609,7 +609,7 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 32px;
         }
 
@@ -801,7 +801,7 @@
 
         .advantages-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 32px;
         }
 
@@ -927,7 +927,7 @@
 
         .values-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 32px;
         }
 
@@ -1002,7 +1002,7 @@
         /* Contact Info Section */
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 32px;
         }
 
@@ -1091,7 +1091,7 @@
 
         .social-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 32px;
             max-width: 800px;
             margin: 0 auto;
@@ -1233,7 +1233,7 @@
 
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 60px;
             margin-bottom: 60px;
         }
@@ -1315,73 +1315,18 @@
             font-size: 16px;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-menu {
-                position: fixed;
-                top: 70px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 70px);
-                background: rgba(15, 15, 35, 0.95);
-                backdrop-filter: blur(20px);
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: center;
-                padding-top: 40px;
-                transition: all 0.3s ease;
-                gap: 24px;
+        /* MOBILE RESPONSIVE DESIGN */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 24px;
             }
 
-            .nav-menu.active {
-                left: 0;
-            }
-
-            .nav-buttons {
-                flex-direction: column;
-                width: 100%;
-                max-width: 200px;
-            }
-
-            .nav-toggle {
-                display: flex;
-            }
-
-            .bar.active:nth-child(1) {
-                transform: rotate(45deg) translate(4px, 4px);
-            }
-
-            .bar.active:nth-child(2) {
-                opacity: 0;
-            }
-
-            .bar.active:nth-child(3) {
-                transform: rotate(-45deg) translate(5px, -4px);
-            }
-
-            .hero h1 {
-                font-size: 3rem;
-            }
-
-            .section-title {
-                font-size: 2.5rem;
-            }
-
-            .cta h2 {
-                font-size: 2.5rem;
-            }
-
-            .mission-card h2 {
-                font-size: 2.5rem;
+            .nav-container {
+                padding: 0 24px;
             }
 
             .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 32px;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             }
 
             .section {
@@ -1392,41 +1337,250 @@
                 padding: 120px 24px 80px;
             }
 
-            .container {
-                padding: 0 24px;
+            .stats {
+                padding: 80px 24px;
             }
 
-            .nav-container {
-                padding: 0 24px;
+            .cta {
+                padding: 100px 24px;
             }
 
-            .mission-card {
-                padding: 60px 40px;
+            .footer {
+                padding: 80px 24px 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* Mobile Navigation */
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: rgba(15, 15, 35, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 40px;
+                transition: all 0.3s ease;
+                gap: 32px;
+                z-index: 999;
             }
 
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+                width: 100%;
+                max-width: 250px;
+                gap: 16px;
+            }
+
+            .btn-nav-primary,
+            .btn-nav-secondary {
+                width: 100%;
+                text-align: center;
+                justify-content: center;
+            }
+
+            .nav-toggle {
+                display: flex;
+                z-index: 1001;
+            }
+
+            .bar.active:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+
+            .bar.active:nth-child(2) {
+                opacity: 0;
+            }
+
+            .bar.active:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+
+            /* Mobile Typography */
+            .hero h1 {
+                font-size: 3rem;
+                line-height: 1.2;
+            }
+
+            .hero p {
+                font-size: 18px;
+                margin-bottom: 32px;
+            }
+
+            .hero-badge {
+                font-size: 14px;
+                padding: 10px 20px;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+                line-height: 1.2;
+            }
+
+            .section-subtitle {
+                font-size: 18px;
+            }
+
+            .cta h2 {
+                font-size: 2.5rem;
+                line-height: 1.2;
+            }
+
+            .cta p {
+                font-size: 18px;
+            }
+
+            .mission-card h2 {
+                font-size: 2.5rem;
+                line-height: 1.2;
+            }
+
+            .mission-card p {
+                font-size: 18px;
+            }
+
+            /* Mobile Buttons */
             .hero-buttons {
                 flex-direction: column;
                 align-items: center;
+                gap: 16px;
             }
 
             .btn-hero-primary,
             .btn-hero-secondary {
                 width: 100%;
-                max-width: 280px;
+                max-width: 300px;
+                padding: 16px 32px;
+                font-size: 16px;
+            }
+
+            /* Mobile Grids */
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .advantages-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .social-cards {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            /* Mobile Cards */
+            .service-card,
+            .process-step,
+            .advantage-item,
+            .value-card,
+            .contact-card,
+            .social-card {
+                padding: 32px 24px;
+            }
+
+            .mission-card {
+                padding: 60px 32px;
+                margin: 0 16px;
+            }
+
+            /* Mobile Stats */
+            .stat-number {
+                font-size: 3rem;
+            }
+
+            .stat-label {
+                font-size: 16px;
+            }
+
+            /* Mobile Icons */
+            .service-icon,
+            .advantage-icon,
+            .value-icon,
+            .contact-icon,
+            .social-card-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+            }
+
+            .process-number {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+            }
+
+            /* Mobile Footer */
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .footer-logo {
+                justify-content: center;
+            }
+
+            /* Mobile Spacing */
+            .section {
+                padding: 80px 20px;
+            }
+
+            .section-header {
+                margin-bottom: 60px;
+            }
+
+            .hero {
+                padding: 100px 20px 60px;
+                min-height: 90vh;
+            }
+
+            .stats {
+                padding: 60px 20px;
+            }
+
+            .cta {
+                padding: 80px 20px;
+            }
+
+            .footer {
+                padding: 60px 20px 40px;
             }
         }
 
         @media (max-width: 480px) {
+            /* Extra Small Mobile */
             .hero h1 {
                 font-size: 2.5rem;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stat-number {
-                font-size: 3rem;
             }
 
             .section-title {
@@ -1441,8 +1595,151 @@
                 font-size: 2rem;
             }
 
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .hero-badge {
+                font-size: 12px;
+                padding: 8px 16px;
+            }
+
+            .hero-badge span {
+                font-size: 16px;
+            }
+
+            .section-badge {
+                font-size: 14px;
+                padding: 10px 20px;
+            }
+
+            .section-badge span {
+                font-size: 16px;
+            }
+
+            .service-card h3,
+            .process-step h3,
+            .advantage-item h3,
+            .value-card h3,
+            .contact-card h3,
+            .social-card h3 {
+                font-size: 20px;
+            }
+
             .mission-card {
-                padding: 40px 24px;
+                padding: 40px 20px;
+                margin: 0 8px;
+            }
+
+            .container {
+                padding: 0 16px;
+            }
+
+            .nav-container {
+                padding: 0 16px;
+            }
+
+            .logo-text {
+                font-size: 20px;
+            }
+
+            .logo-image {
+                width: 32px;
+                height: 32px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            /* Very Small Mobile */
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .cta h2 {
+                font-size: 1.75rem;
+            }
+
+            .mission-card h2 {
+                font-size: 1.75rem;
+            }
+
+            .btn-hero-primary,
+            .btn-hero-secondary {
+                padding: 14px 24px;
+                font-size: 15px;
+            }
+
+            .service-card,
+            .process-step,
+            .advantage-item,
+            .value-card,
+            .contact-card,
+            .social-card {
+                padding: 24px 16px;
+            }
+
+            .mission-card {
+                padding: 32px 16px;
+            }
+        }
+
+        /* Landscape Mobile */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .hero {
+                min-height: 100vh;
+                padding: 120px 20px 60px;
+            }
+
+            .nav-menu {
+                height: calc(100vh - 70px);
+                padding-top: 20px;
+                gap: 20px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section {
+                padding: 60px 20px;
+            }
+        }
+
+        /* Touch Device Optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .service-card:hover,
+            .advantage-item:hover,
+            .value-card:hover,
+            .contact-card:hover,
+            .social-card:hover,
+            .process-step:hover,
+            .stat-item:hover {
+                transform: none;
+                box-shadow: none;
+            }
+
+            .service-card:hover .service-icon,
+            .advantage-item:hover .advantage-icon,
+            .value-card:hover .value-icon,
+            .contact-card:hover .contact-icon,
+            .social-card:hover .social-card-icon,
+            .process-step:hover .process-number {
+                transform: none;
+            }
+
+            .btn-hero-primary:hover,
+            .btn-hero-secondary:hover,
+            .btn-nav-primary:hover {
+                transform: none;
             }
         }
     </style>
@@ -1498,8 +1795,8 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-badge">
-                    <!-- <span>🚀</span>
-                    Trusted by 500+ Businesses Worldwide -->
+                    <span>🚀</span>
+                    Trusted by 500+ Businesses Worldwide
                 </div>
                 <h1>Transform Your Business with <span class="hero-gradient">Premium IT Solutions</span></h1>
                 <p>Experience enterprise-grade technology services that drive innovation, enhance security, and accelerate your digital transformation journey with unmatched precision and expertise.</p>
