@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - Delino Tech</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a19;
+            background-image: radial-gradient(ellipse at top, #1a1a2e 0%, #0f0f23 50%, #000000 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* Premium Background Effects */
+        .premium-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .floating-orbs {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, rgba(139, 92, 246, 0.1) 50%, transparent 100%);
+            animation: float 20s infinite ease-in-out;
+            filter: blur(1px);
+        }
+
+        .orb:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .orb:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 7s;
+        }
+
+        .orb:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 14s;
+        }
+
+        .orb:nth-child(4) {
+            width: 250px;
+            height: 250px;
+            top: 30%;
+            right: 30%;
+            animation-delay: 3s;
+        }
+
+        .premium-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(139, 92, 246, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(139, 92, 246, 0.03) 1px, transparent 1px);
+            background-size: 100px 100px;
+            animation: gridFloat 30s linear infinite;
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #8b5cf6;
+            border-radius: 50%;
+            animation: particleFloat 15s infinite linear;
+            box-shadow: 0 0 6px #8b5cf6;
+        }
+
+        .particle:nth-child(1) { left: 20%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 40%; animation-delay: 3s; }
+        .particle:nth-child(3) { left: 60%; animation-delay: 6s; }
+        .particle:nth-child(4) { left: 80%; animation-delay: 9s; }
+        .particle:nth-child(5) { left: 10%; animation-delay: 12s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) translateX(0px) scale(1); }
+            25% { transform: translateY(-20px) translateX(10px) scale(1.1); }
+            50% { transform: translateY(-10px) translateX(-10px) scale(0.9); }
+            75% { transform: translateY(-30px) translateX(5px) scale(1.05); }
+        }
+
+        @keyframes gridFloat {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100px, 100px); }
+        }
+
+        @keyframes particleFloat {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 1; transform: scale(1); }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) scale(0); opacity: 0; }
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 25, 0.8);
+            backdrop-filter: blur(30px);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-container:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .back-btn {
+            color: #a1a1aa;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-btn:hover {
+            color: #8b5cf6;
+            background: rgba(139, 92, 246, 0.1);
+        }
+
+        /* Sign In Container */
+        .signin-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 32px 60px;
+        }
+
+        .signin-card {
+            background: rgba(30, 30, 60, 0.4);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 24px;
+            padding: 60px;
+            width: 100%;
+            max-width: 480px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.1);
+        }
+
+        .signin-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(168, 85, 247, 0.05));
+            opacity: 0.5;
+        }
+
+        .signin-header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .signin-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 20px;
+            background: rgba(139, 92, 246, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #8b5cf6;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 32px rgba(139, 92, 246, 0.2);
+        }
+
+        .signin-badge span {
+            margin-right: 8px;
+            font-size: 16px;
+        }
+
+        .signin-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+
+        .signin-subtitle {
+            color: #a1a1aa;
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        /* Form Styles */
+        .signin-form {
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-label {
+            display: block;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 12px;
+            color: #ffffff;
+            font-size: 16px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .form-input::placeholder {
+            color: #6b7280;
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+            font-size: 14px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .checkbox {
+            width: 16px;
+            height: 16px;
+            accent-color: #8b5cf6;
+        }
+
+        .checkbox-label {
+            color: #a1a1aa;
+            cursor: pointer;
+        }
+
+        .forgot-link {
+            color: #8b5cf6;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .forgot-link:hover {
+            color: #a855f7;
+            text-decoration: underline;
+        }
+
+        .signin-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #8b5cf6, #a855f7, #c084fc);
+            color: #ffffff;
+            padding: 18px 24px;
+            border-radius: 12px;
+            border: none;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(139, 92, 246, 0.4);
+            margin-bottom: 24px;
+        }
+
+        .signin-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .signin-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 48px rgba(139, 92, 246, 0.6);
+        }
+
+        .signin-btn:hover::before {
+            left: 100%;
+        }
+
+        .signin-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Divider */
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 32px 0;
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(139, 92, 246, 0.2);
+        }
+
+        .divider span {
+            padding: 0 16px;
+        }
+
+        /* Social Buttons */
+        .social-buttons {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .social-btn {
+            flex: 1;
+            padding: 14px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 12px;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-btn:hover {
+            border-color: #8b5cf6;
+            background: rgba(139, 92, 246, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .signin-footer {
+            text-align: center;
+            color: #a1a1aa;
+            font-size: 14px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .signin-footer a {
+            color: #8b5cf6;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .signin-footer a:hover {
+            color: #a855f7;
+            text-decoration: underline;
+        }
+
+        /* Loading State */
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .loading .signin-btn {
+            background: #6b7280;
+        }
+
+        /* Success Message */
+        .success-message {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #22c55e;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            display: none;
+        }
+
+        /* Error Message */
+        .error-message {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #ef4444;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            display: none;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 20px;
+            }
+
+            .signin-container {
+                padding: 100px 20px 40px;
+            }
+
+            .signin-card {
+                padding: 40px 24px;
+            }
+
+            .signin-title {
+                font-size: 2rem;
+            }
+
+            .social-buttons {
+                flex-direction: column;
+            }
+
+            .form-options {
+                flex-direction: column;
+                gap: 16px;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .signin-container {
+                padding: 90px 16px 30px;
+            }
+
+            .signin-card {
+                padding: 32px 20px;
+            }
+
+            .signin-title {
+                font-size: 1.75rem;
+            }
+
+            .logo-text {
+                font-size: 20px;
+            }
+
+            .logo-image {
+                width: 32px;
+                height: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Premium Background Effects -->
+    <div class="premium-background">
+        <div class="premium-grid"></div>
+        <div class="floating-orbs">
+            <div class="orb"></div>
+            <div class="orb"></div>
+            <div class="orb"></div>
+            <div class="orb"></div>
+        </div>
+        <div class="particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo-container">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/nnjj.JPG-UgppeVi1fjJKGMlHSYPQKIdi9jNtT0.jpeg" alt="Delino Tech Logo" class="logo-image">
+                <span class="logo-text">Delino Tech</span>
+            </a>
+            
+            <a href="index.html" class="back-btn">
+                ← Back to Home
+            </a>
+        </div>
+    </nav>
+
+    <!-- Sign In Container -->
+    <div class="signin-container">
+        <div class="signin-card">
+            <div class="signin-header">
+                <div class="signin-badge">
+                    <span>🔐</span>
+                    Secure Access
+                </div>
+                <h1 class="signin-title">Welcome Back</h1>
+                <p class="signin-subtitle">Sign in to access your premium IT solutions dashboard</p>
+            </div>
+
+            <div class="success-message" id="successMessage">
+                Successfully signed in! Redirecting to dashboard...
+            </div>
+
+            <div class="error-message" id="errorMessage">
+                Invalid credentials. Please try again.
+            </div>
+
+            <form class="signin-form" id="signinForm">
+                <div class="form-group">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        class="form-input" 
+                        placeholder="Enter your email address"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="form-label">Password</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        class="form-input" 
+                        placeholder="Enter your password"
+                        required
+                    >
+                </div>
+
+                <div class="form-options">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="remember" class="checkbox">
+                        <label for="remember" class="checkbox-label">Remember me</label>
+                    </div>
+                    <a href="#" class="forgot-link">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="signin-btn">
+                    Sign In to Dashboard
+                </button>
+            </form>
+
+            <div class="divider">
+                <span>Or continue with</span>
+            </div>
+
+            <div class="social-buttons">
+                <button class="social-btn" onclick="signInWithGoogle()">
+                    <span>🔍</span>
+                    Google
+                </button>
+                <button class="social-btn" onclick="signInWithMicrosoft()">
+                    <span>🏢</span>
+                    Microsoft
+                </button>
+            </div>
+
+            <div class="signin-footer">
+                Don't have an account? <a href="#" onclick="showComingSoon()">Create one</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Form handling
+        document.getElementById('signinForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            const form = document.getElementById('signinForm');
+            
+            // Hide previous messages
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+            
+            // Add loading state
+            form.classList.add('loading');
+            
+            // Simulate authentication (replace with real authentication)
+            setTimeout(() => {
+                form.classList.remove('loading');
+                
+                // Demo credentials for testing
+                if (email === 'demo@delinotech.com' && password === 'demo123') {
+                    successMessage.style.display = 'block';
+                    setTimeout(() => {
+                        // Redirect to dashboard (you can create a dashboard page)
+                        alert('Dashboard coming soon! Redirecting to home page...');
+                        window.location.href = 'index.html';
+                    }, 2000);
+                } else {
+                    errorMessage.style.display = 'block';
+                }
+            }, 1500);
+        });
+
+        // Social sign-in functions
+        function signInWithGoogle() {
+            alert('Google Sign-In integration coming soon!');
+        }
+
+        function signInWithMicrosoft() {
+            alert('Microsoft Sign-In integration coming soon!');
+        }
+
+        function showComingSoon() {
+            alert('Account registration coming soon! Contact us at info@delinotech.com for early access.');
+        }
+
+        // Premium mouse parallax effect
+        document.addEventListener('mousemove', function(e) {
+            const orbs = document.querySelectorAll('.orb');
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+
+            orbs.forEach((orb, index) => {
+                const speed = (index + 1) * 0.5;
+                const x = (mouseX - 0.5) * speed * 30;
+                const y = (mouseY - 0.5) * speed * 30;
+                orb.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        });
+
+        // Form validation feedback
+        const inputs = document.querySelectorAll('.form-input');
+        inputs.forEach(input => {
+            input.addEventListener('blur', function() {
+                if (this.value && this.checkValidity()) {
+                    this.style.borderColor = '#22c55e';
+                } else if (this.value) {
+                    this.style.borderColor = '#ef4444';
+                }
+            });
+
+            input.addEventListener('focus', function() {
+                this.style.borderColor = '#8b5cf6';
+            });
+        });
+    </script>
+</body>
+</html>
