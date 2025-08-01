@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="x-icon" href="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/nnjj.JPG-UgppeVi1fjJKGMlHSYPQKIdi9jNtT0.jpeg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Delino Tech</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a19;
+            background-image: radial-gradient(ellipse at top, #1a1a2e 0%, #0f0f23 50%, #000000 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* Premium Background Effects */
+        .premium-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .floating-orbs {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, rgba(139, 92, 246, 0.1) 50%, transparent 100%);
+            animation: float 20s infinite ease-in-out;
+            filter: blur(1px);
+        }
+
+        .orb:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .orb:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 7s;
+        }
+
+        .orb:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 14s;
+        }
+
+        .orb:nth-child(4) {
+            width: 250px;
+            height: 250px;
+            top: 30%;
+            right: 30%;
+            animation-delay: 3s;
+        }
+
+        .premium-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(139, 92, 246, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(139, 92, 246, 0.03) 1px, transparent 1px);
+            background-size: 100px 100px;
+            animation: gridFloat 30s linear infinite;
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #8b5cf6;
+            border-radius: 50%;
+            animation: particleFloat 15s infinite linear;
+            box-shadow: 0 0 6px #8b5cf6;
+        }
+
+        .particle:nth-child(1) { left: 20%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 40%; animation-delay: 3s; }
+        .particle:nth-child(3) { left: 60%; animation-delay: 6s; }
+        .particle:nth-child(4) { left: 80%; animation-delay: 9s; }
+        .particle:nth-child(5) { left: 10%; animation-delay: 12s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) translateX(0px) scale(1); }
+            25% { transform: translateY(-20px) translateX(10px) scale(1.1); }
+            50% { transform: translateY(-10px) translateX(-10px) scale(0.9); }
+            75% { transform: translateY(-30px) translateX(5px) scale(1.05); }
+        }
+
+        @keyframes gridFloat {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(100px, 100px); }
+        }
+
+        @keyframes particleFloat {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 1; transform: scale(1); }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) scale(0); opacity: 0; }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 25, 0.8);
+            backdrop-filter: blur(30px);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-container:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .back-btn {
+            color: #a1a1aa;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-btn:hover {
+            color: #8b5cf6;
+            background: rgba(139, 92, 246, 0.1);
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 140px 32px;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 24px;
+            background: rgba(139, 92, 246, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            color: #8b5cf6;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 32px rgba(139, 92, 246, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .section-badge:hover {
+            transform: scale(1.05);
+        }
+
+        .section-badge span {
+            margin-right: 12px;
+            font-size: 20px;
+        }
+
+        .section-title {
+            font-size: 4rem;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .section-subtitle {
+            font-size: 22px;
+            color: #a1a1aa;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        /* About Page Specific Styles */
+        .about-page-section {
+            padding-top: 120px; /* Adjust for fixed navbar */
+            padding-bottom: 60px;
+        }
+
+        /* Mission Section (reused from index.html) */
+        .mission-card {
+            background: rgba(30, 30, 60, 0.4);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            border-radius: 24px;
+            padding: 80px 60px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 60px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.1);
+        }
+
+        .mission-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(168, 85, 247, 0.05));
+            opacity: 0.5;
+        }
+
+        .mission-card h2 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 32px;
+            letter-spacing: -0.02em;
+            position: relative;
+            z-index: 2;
+        }
+
+        .mission-card p {
+            font-size: 20px;
+            color: #a1a1aa;
+            line-height: 1.7;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Values Section (reused from index.html) */
+        .values {
+            background: rgba(20, 20, 40, 0.3);
+            backdrop-filter: blur(30px);
+            border-top: 1px solid rgba(139, 92, 246, 0.1);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .value-card {
+            background: rgba(30, 30, 60, 0.4);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(139, 92, 246, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(168, 85, 247, 0.05));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .value-card:hover {
+            border-color: rgba(139, 92, 246, 0.4);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.2);
+        }
+
+        .value-card:hover::before {
+            opacity: 1;
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(168, 85, 247, 0.2));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            color: #8b5cf6;
+            font-size: 32px;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 32px rgba(139, 92, 246, 0.2);
+        }
+
+        .value-card:hover .value-icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 16px 48px rgba(139, 92, 246, 0.4);
+        }
+
+        .value-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
+        }
+
+        .value-card p {
+            color: #a1a1aa;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+
+        .team-member-card {
+            background: rgba(30, 30, 60, 0.4);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(139, 92, 246, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-member-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(168, 85, 247, 0.05));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .team-member-card:hover {
+            border-color: rgba(139, 92, 246, 0.4);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.2);
+        }
+
+        .team-member-card:hover::before {
+            opacity: 1;
+        }
+
+        .team-member-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 24px;
+            border: 4px solid rgba(139, 92, 246, 0.3);
+            box-shadow: 0 8px 32px rgba(139, 92, 246, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        .team-member-card:hover .team-member-img {
+            transform: scale(1.05);
+            border-color: #8b5cf6;
+            box-shadow: 0 16px 48px rgba(139, 92, 246, 0.4);
+        }
+
+        .team-member-card h3 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+            letter-spacing: -0.01em;
+        }
+
+        .team-member-card p {
+            color: #a1a1aa;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .team-member-role {
+            font-size: 15px;
+            color: #8b5cf6;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        /* Premium Footer (reused from index.html) */
+        .footer {
+            border-top: 1px solid rgba(139, 92, 246, 0.1);
+            padding: 100px 32px 60px;
+            background: rgba(5, 5, 15, 0.8);
+            backdrop-filter: blur(30px);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+        }
+
+        .footer-logo span {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-section h3 {
+            color: #ffffff;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-size: 18px;
+            letter-spacing: -0.01em;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section a,
+        .footer-section button {
+            color: #a1a1aa;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-family: inherit;
+            padding: 4px 0;
+        }
+
+        .footer-section a:hover,
+        .footer-section button:hover {
+            color: #8b5cf6;
+            transform: translateX(4px);
+        }
+
+        .footer-section p {
+            color: #a1a1aa;
+            margin-bottom: 12px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(139, 92, 246, 0.1);
+            padding-top: 32px;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            color: #6b7280;
+            font-size: 16px;
+        }
+
+        /* MOBILE RESPONSIVE DESIGN */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 0 24px;
+            }
+            .nav-container {
+                padding: 0 24px;
+            }
+            .section {
+                padding: 60px 24px;
+            }
+            .footer {
+                padding: 60px 24px 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-header {
+                margin-bottom: 40px;
+            }
+            .section-title {
+                font-size: 2.8rem;
+            }
+            .section-subtitle {
+                font-size: 18px;
+                color: #e5e7eb;
+            }
+            .mission-card {
+                padding: 40px 24px;
+                margin: 0 auto 40px;
+            }
+            .mission-card h2 {
+                font-size: 2rem;
+            }
+            .mission-card p {
+                font-size: 18px;
+                color: #e5e7eb;
+            }
+            .values-grid {
+                gap: 20px;
+            }
+            .value-card {
+                padding: 24px 20px;
+            }
+            .value-card p {
+                color: #e5e7eb;
+            }
+            .team-grid {
+                gap: 20px;
+            }
+            .team-member-card {
+                padding: 24px 20px;
+            }
+            .team-member-card p {
+                color: #e5e7eb;
+            }
+            .footer {
+                padding: 40px 20px 30px;
+            }
+            .premium-background::after {
+                content: '';
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.3); /* Dark overlay for better text contrast */
+                z-index: -1;
+                pointer-events: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section {
+                padding: 30px 16px;
+            }
+            .section-header {
+                margin-bottom: 30px;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .mission-card {
+                padding: 32px 16px;
+            }
+            .mission-card h2 {
+                font-size: 1.75rem;
+            }
+            .footer {
+                padding: 30px 16px 20px;
+            }
+            .logo-text {
+                font-size: 20px;
+            }
+            .logo-image {
+                width: 32px;
+                height: 32px;
+            }
+            .mission-card p,
+            .value-card p,
+            .team-member-card p {
+                color: #f3f4f6 !important; /* Force light color */
+            }
+        }
+
+        @media (hover: none) and (pointer: coarse) {
+            .mission-card:hover,
+            .value-card:hover,
+            .team-member-card:hover {
+                transform: none;
+                box-shadow: none;
+            }
+            .value-card:hover .value-icon,
+            .team-member-card:hover .team-member-img {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Premium Background Effects -->
+    <div class="premium-background">
+        <div class="premium-grid"></div>
+        <div class="floating-orbs">
+            <div class="orb"></div>
+            <div class="orb"></div>
+            <div class="orb"></div>
+            <div class="orb"></div>
+        </div>
+        <div class="particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo-container">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/nnjj.JPG-UgppeVi1fjJKGMlHSYPQKIdi9jNtT0.jpeg" alt="Delino Tech Logo" class="logo-image">
+                <span class="logo-text">Delino Tech</span>
+            </a>
+            
+            <a href="index.html" class="back-btn">
+                ← Back to Home
+            </a>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <section class="section about-page-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <span>💡</span>
+                    Our Story
+                </div>
+                <h1 class="section-title">About Delino Tech</h1>
+                <p class="section-subtitle">Discover our journey, mission, and the core values that drive us to deliver unparalleled IT solutions and empower businesses worldwide.</p>
+            </div>
+            
+            <div class="mission-card">
+                <h2>Empowering Digital Transformation</h2>
+                <p>At Delino Tech, we are dedicated to empowering businesses through innovative technology solutions. Our mission is to bridge the gap between complex technology and business success, delivering solutions that not only meet today's challenges but anticipate tomorrow's opportunities. We believe in creating lasting partnerships that drive sustainable growth and competitive advantage in the digital landscape.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="section values">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <span>💎</span>
+                    Our Values
+                </div>
+                <h2 class="section-title">What Drives Us</h2>
+                <p class="section-subtitle">Our core values guide every decision we make and every solution we deliver, ensuring consistent excellence and client satisfaction.</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">🎯</div>
+                    <h3>Excellence</h3>
+                    <p>We strive for excellence in every project, delivering solutions that exceed expectations and drive measurable business results through meticulous attention to detail.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3>Partnership</h3>
+                    <p>We believe in building long-term partnerships with our clients, working together as trusted advisors to achieve shared success and mutual growth.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🚀</div>
+                    <h3>Innovation</h3>
+                    <p>We embrace emerging technologies and innovative approaches to solve complex business challenges and create competitive advantages for our clients.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Team Section
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <span>👨‍💻</span>
+                    Meet the Experts
+                </div>
+                <h2 class="section-title">Our Dedicated Team</h2>
+                <p class="section-subtitle">Behind every successful project is a team of passionate and skilled professionals committed to your digital success.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member-card">
+                    <img src="/placeholder.svg?height=120&width=120" alt="John Doe" class="team-member-img">
+                    <h3>John Doe</h3>
+                    <p class="team-member-role">CEO & Founder</p>
+                    <p>Visionary leader with over 20 years of experience in IT strategy and digital transformation.</p>
+                </div>
+                <div class="team-member-card">
+                    <img src="/placeholder.svg?height=120&width=120" alt="Jane Smith" class="team-member-img">
+                    <h3>Jane Smith</h3>
+                    <p class="team-member-role">Chief Technology Officer</p>
+                    <p>Expert in cloud architecture and cybersecurity, driving our innovative solutions forward.</p>
+                </div>
+                <div class="team-member-card">
+                    <img src="/placeholder.svg?height=120&width=120" alt="Michael Brown" class="team-member-img">
+                    <h3>Michael Brown</h3>
+                    <p class="team-member-role">Head of Software Development</p>
+                    <p>Leads our development team in crafting bespoke software solutions for diverse industries.</p>
+                </div>
+                <div class="team-member-card">
+                    <img src="/placeholder.svg?height=120&width=120" alt="Emily White" class="team-member-img">
+                    <h3>Emily White</h3>
+                    <p class="team-member-role">Client Success Manager</p>
+                    <p>Ensures our clients receive unparalleled support and achieve their business objectives.</p>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Premium Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/nnjj.JPG-UgppeVi1fjJKGMlHSYPQKIdi9jNtT0.jpeg" alt="Delino Tech Logo">
+                        <span>Delino Tech</span>
+                    </div>
+                    <p>Empowering businesses through innovative technology solutions. Your trusted partner for digital transformation and IT excellence in the modern digital landscape.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="index.html#services">Cloud Computing</a></li>
+                        <li><a href="index.html#services">NetSuite Services</a></li>
+                        <li><a href="index.html#services">Cybersecurity</a></li>
+                        <li><a href="index.html#services">Software Development</a></li>
+                        <li><a href="index.html#services">IT Support & Maintenance</a></li>
+                        <li><a href="index.html#services">Data Analytics</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="index.html#process">Our Process</a></li>
+                        <li><a href="https://www.linkedin.com/company/delinotech/" target="_blank">LinkedIn</a></li>
+                        <li><a href="https://www.youtube.com/@DelinoTech" target="_blank">YouTube</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p>Orlando, Florida, United States</p>
+                    <p>info@delinotech.com</p>
+                    <p>Monday - Friday: 9:00 AM - 6:00 PM EST</p>
+                    <p>24/7 Emergency Support Available</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Delino Tech. All rights reserved. Crafted with precision and excellence.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Premium mouse parallax effect
+        document.addEventListener('mousemove', function(e) {
+            const orbs = document.querySelectorAll('.orb');
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+
+            orbs.forEach((orb, index) => {
+                const speed = (index + 1) * 0.5;
+                const x = (mouseX - 0.5) * speed * 30;
+                const y = (mouseY - 0.5) * speed * 30;
+                orb.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
